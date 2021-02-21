@@ -1,0 +1,23 @@
+<button class="button btn-info" *ngIf='showFile' (click)='showFiles(false)'>Hide Files</button>
+
+<button class="button btn-info" *ngIf='!showFile' (click)='showFiles(true)'>Show Files</button>
+
+<div [hidden]="!showFile">
+  <div class="panel panel-primary">
+    <div class="panel-heading">List of Files</div>
+    <div class="row">
+      <div class="col-md-3 mb-3 sm-2 xs-1 d-flex align-items-stretch"
+      *ngFor="let image of images; let i = index">
+          <div class="card">
+            <h6 class="card-title">{{image.imageName}}</h6>
+            <details-upload [fileUpload]='image.imageName'></details-upload>
+                <button
+                (click)="onDeleteClick(image)"
+                style="float: right;"
+                >Delete
+                </button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
